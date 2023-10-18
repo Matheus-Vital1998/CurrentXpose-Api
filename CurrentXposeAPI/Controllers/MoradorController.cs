@@ -1,4 +1,4 @@
-﻿using CurrentXpose.Domain.Entidades;
+﻿using CurrentXposeAPI.Entidades;
 using CurrentXposeAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
