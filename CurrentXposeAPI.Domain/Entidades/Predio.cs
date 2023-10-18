@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CurrentXposeAPI.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,12 +8,14 @@ using System.Threading.Tasks;
 
 namespace CurrentXpose.Domain.Entidades
 {
-    public class Condominio
+    public class Predio : BaseModel
     {
         [Key]
         public int id { get; set; }
         public string nome { get; set; }
+        public int total_de_andares { get; set; }
+        public Condominio condominio { get; set; }
 
-        public Condominio() { }
+        public Predio() { }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CurrentXposeAPI.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CurrentXpose.Domain.Entidades
 {
-    public class Leitura
+    public class Leitura : BaseModel
     {
         [Key]
         public int id { get; set; }

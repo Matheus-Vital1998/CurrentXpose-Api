@@ -1,4 +1,5 @@
 ﻿using CurrentXpose.Domain.Enums;
+using CurrentXposeAPI.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CurrentXpose.Domain.Entidades
 {
-    public class Sindico
+    public class Sindico : BaseModel
     {
         [Key]
         public int id { get; set; }
