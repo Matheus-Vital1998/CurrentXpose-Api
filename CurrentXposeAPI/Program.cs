@@ -15,7 +15,14 @@ builder.Services.AddDbContext<CurrentXposeAPIContext>(options =>
 
 builder.Services.AddControllers();
 
+//Add services
 builder.Services.AddScoped<IMoradorService, MoradorService>();
+builder.Services.AddScoped<ICondominioService, CondominioService>();
+builder.Services.AddScoped<ILeituraService, LeituraService>();
+builder.Services.AddScoped<IPredioService, PredioService>();
+builder.Services.AddScoped<IResidenciaService, ResidenciaService>();
+builder.Services.AddScoped<ISindicoService, SindicoService>();
+
 
 // Add repositorys
 builder.Services.AddScoped<IMoradorRepository, MoradorRepository>();
