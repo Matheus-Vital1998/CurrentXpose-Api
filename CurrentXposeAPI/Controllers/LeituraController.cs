@@ -1,6 +1,8 @@
 ﻿using CurrentXposeAPI.Entidades;
 using CurrentXposeAPI.Services;
 using CurrentXposeAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CurrentXposeAPI.Controllers
@@ -14,6 +16,7 @@ namespace CurrentXposeAPI.Controllers
             _leituraService = leituraService;
         }
 
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("ObterDadosDeLeitura")]
         public async Task<List<Leitura>> ObterDadosDeLeitura()
         {

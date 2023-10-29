@@ -1,5 +1,7 @@
 ﻿using CurrentXposeAPI.Entidades;
 using CurrentXposeAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CurrentXposeAPI.Controllers
@@ -15,6 +17,7 @@ namespace CurrentXposeAPI.Controllers
             _moradorService = moradorService;
         }
 
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("ObterMoradores")]
         public async Task<List<Morador>> ObterMoradores()
         {

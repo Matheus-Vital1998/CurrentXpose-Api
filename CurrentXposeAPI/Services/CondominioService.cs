@@ -13,7 +13,7 @@ namespace CurrentXposeAPI.Services
         }
         public Task<IReadOnlyList<Condominio>> ObterCondominios()
         {
-            return _condominioRepository.GetAll();
+            return  _condominioRepository.GetAll();
         }
     }
 }

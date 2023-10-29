@@ -1,6 +1,8 @@
 ﻿using CurrentXposeAPI.Entidades;
 using CurrentXposeAPI.Services;
 using CurrentXposeAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CurrentXposeAPI.Controllers
@@ -14,6 +16,7 @@ namespace CurrentXposeAPI.Controllers
             _predioService = predioService;
         }
 
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("ObterPredios")]
         public async Task<List<Predio>> ObterPredios()
         {
