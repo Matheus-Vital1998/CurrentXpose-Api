@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CurrentXpose.Domain.Enums
+namespace CurrentXposeAPI.Enums
 {
     public enum Tipo_Relatorio
     {
