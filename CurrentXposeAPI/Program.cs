@@ -20,7 +20,6 @@ builder.Services.AddDbContext<CurrentXposeAPIContext>(options =>
     builder => builder.MigrationsAssembly(typeof(CurrentXposeAPIContext).Assembly.FullName)));
 
 // Add Jwt
-
 var key = Encoding.ASCII.GetBytes("123as4d56asd456dsdvadcwdgvwrgbvefwvcwwgedwfwgg");
 
 builder.Services.AddAuthentication(x =>
@@ -41,10 +40,9 @@ builder.Services.AddAuthentication(x =>
 });
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 
-//Add services
+// Add services
 builder.Services.AddScoped<IMoradorService, MoradorService>();
 builder.Services.AddScoped<ICondominioService, CondominioService>();
 builder.Services.AddScoped<ILeituraService, LeituraService>();
@@ -53,9 +51,7 @@ builder.Services.AddScoped<IResidenciaService, ResidenciaService>();
 builder.Services.AddScoped<ISindicoService, SindicoService>();
 builder.Services.AddScoped<TokenService>();
 
-
-
-// Add repositorys
+// Add repositories
 builder.Services.AddScoped<IMoradorRepository, MoradorRepository>();
 builder.Services.AddScoped<ICondominioRepository, CondominioRepository>();
 builder.Services.AddScoped<ILeituraRepository, LeituraRepository>();
