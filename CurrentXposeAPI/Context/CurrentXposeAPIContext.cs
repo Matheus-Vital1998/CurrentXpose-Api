@@ -1,4 +1,4 @@
-﻿using CurrentXpose.Domain.Entidades;
+﻿using CurrentXposeAPI.Entidades;
 using Microsoft.EntityFrameworkCore;
 
 namespace CurrentXposeAPI.Context

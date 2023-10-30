@@ -1,4 +1,4 @@
-﻿using CurrentXpose.Domain.Enums;
+﻿using CurrentXposeAPI.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CurrentXpose.Domain.Entidades
+namespace CurrentXposeAPI.Entidades
 {
-    public class Residencia
+    public class Residencia : BaseModel
     {
         [Key]
         public int id { get; set; }
