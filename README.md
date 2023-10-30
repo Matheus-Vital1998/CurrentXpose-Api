@@ -9,7 +9,7 @@ https://currentxposeapi-homologacao.azurewebsites.net/swagger
 https://currentxpose-homologacao.azurewebsites.net/
 
 ## Urls de produção 
-- Api de homologação:
+- Api de Produção:
 https://currentxposeapi.azurewebsites.net/swagger
-- Projeto web de homologação:
+- Projeto web de Produção:
 https://currentxpose.azurewebsites.net/
