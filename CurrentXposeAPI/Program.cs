@@ -6,8 +6,11 @@ using CurrentXposeAPI.Services;
 using CurrentXposeAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System;
+using System.Collections.Generic;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,7 +21,7 @@ builder.Services.AddDbContext<CurrentXposeAPIContext>(options =>
 
 // Add Jwt
 
-var key = Encoding.ASCII.GetBytes(CurrentXposeAPI.Segurança.Entidade.Key.Secret);
+var key = Encoding.ASCII.GetBytes("123as4d56asd456dsdvadcwdgvwrgbvefwvcwwgedwfwgg");
 
 builder.Services.AddAuthentication(x =>
 {
