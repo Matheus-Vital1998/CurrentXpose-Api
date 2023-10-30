@@ -6,8 +6,6 @@ using CurrentXposeAPI.Services;
 using CurrentXposeAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -33,7 +31,7 @@ builder.Services.AddAuthentication(x =>
     x.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("123as4d56asd456dsdvadcwdgvwrgbvefwvcwwgedwfwgg")),
+        IssuerSigningKey = new SymmetricSecurityKey(key),
         ValidateIssuer = false,
         ValidateAudience = false
     };
@@ -51,6 +49,7 @@ builder.Services.AddScoped<IPredioService, PredioService>();
 builder.Services.AddScoped<IResidenciaService, ResidenciaService>();
 builder.Services.AddScoped<ISindicoService, SindicoService>();
 builder.Services.AddScoped<TokenService>();
+
 
 
 // Add repositorys
