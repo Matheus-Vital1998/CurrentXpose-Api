@@ -24,8 +24,8 @@ namespace CurrentXposeAPI.Repository
                                 dbo.Predio.total_de_andares,
                                 dbo.Condominio.nome
                             from dbo.Residencia
-                            INNER JOIN dbo.Predio on dbo.Residencia.predio = dbo.Predio.id,
-                            INNER JOIN dbo.Condominio on dbo.Predio.condominio = dbo.Condominio.id
+                            INNER JOIN dbo.Predio on dbo.Residencia.predio_id = dbo.Predio.id,
+                            INNER JOIN dbo.Condominio on dbo.Predio.condominio_id = dbo.Condominio.id
                             order by nome";
 
                 var result = await conn.QueryAsync<Residencia>(sql);
