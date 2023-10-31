@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CurrentXposeAPI.Repository
 {
-    public class ResidenciaRepository : BaseRepository<Residencia> , IResidenciaRepository
+    public class ResidenciaRepository : BaseRepository<Residencia>, IResidenciaRepository
     {
         public ResidenciaRepository(CurrentXposeAPIContext context) : base(context) { }
 
@@ -16,10 +16,17 @@ namespace CurrentXposeAPI.Repository
             {
                 conn.Open();
                 var sql = $@"select
-                                id,
-                                numero,
-                                andar
-                            from dbo.Residencia";
+                                dbo.Residencia.id,
+                                dbo.Residencia.numero,
+                                dbo.Residencia.andar,
+                                dbo.Predio.id,
+                                dbo.Predio.nome,
+                                dbo.Predio.total_de_andares,
+                                dbo.Condominio.nome
+                            from dbo.Residencia
+                            INNER JOIN dbo.Predio on dbo.Residencia.predio = dbo.Predio.id,
+                            INNER JOIN dbo.Condominio on dbo.Predio.condominio = dbo.Condominio.id
+                            order by nome";
 
                 var result = await conn.QueryAsync<Residencia>(sql);
                 conn.Close();
