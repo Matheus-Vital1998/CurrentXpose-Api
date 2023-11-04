@@ -16,9 +16,9 @@ namespace CurrentXposeAPI.Repository
             {
                 conn.Open();
                 var sql = $@"select
-                                id,
-                                data_da_leitura,
-                                valor_da_leitura,
+                                dbo.Leitura.id,
+                                dbo.Leitura.data_da_leitura,
+                                dbo.Leitura.valor_da_leitura,
                                 dbo.Residencia.numero,
                                 dbo.Residencia.andar
                             from dbo.Leitura
