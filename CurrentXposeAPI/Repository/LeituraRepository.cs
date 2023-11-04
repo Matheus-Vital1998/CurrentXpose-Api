@@ -16,10 +16,13 @@ namespace CurrentXposeAPI.Repository
             {
                 conn.Open();
                 var sql = $@"select
-                                id,
-                                data_da_leitura,
-                                valor_da_leitura
-                            from dbo.Leitura";
+                                dbo.Leitura.id,
+                                dbo.Leitura.data_da_leitura,
+                                dbo.Leitura.valor_da_leitura,
+                                dbo.Residencia.numero,
+                                dbo.Residencia.andar
+                            from dbo.Leitura
+                            INNER JOIN dbo.Residencia on Leitura.residencia_id = Residencia.Id";
 
                 var result = await conn.QueryAsync<Leitura>(sql);
                 conn.Close();
