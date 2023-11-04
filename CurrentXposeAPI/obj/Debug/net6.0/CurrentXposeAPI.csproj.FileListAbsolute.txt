@@ -554,3 +554,5 @@ C:\Users\FH185\Documents\Ternomecanica\Projeto interdisciplinar\CurrentXpose-Api
 C:\Users\FH185\Documents\Ternomecanica\Projeto interdisciplinar\CurrentXpose-Api\CurrentXposeAPI\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\FH185\Documents\Ternomecanica\Projeto interdisciplinar\CurrentXpose-Api\CurrentXposeAPI\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\FH185\Documents\Ternomecanica\Projeto interdisciplinar\CurrentXpose-Api\CurrentXposeAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+Z:\CurrentXpose-Api\CurrentXposeAPI\bin\Debug\net6.0\Dapper.dll
+Z:\CurrentXpose-Api\CurrentXposeAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
