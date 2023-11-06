@@ -21,11 +21,8 @@ namespace CurrentXposeAPI.Repository
                                 dbo.Morador.login,
                                 dbo.Morador.senha,
                                 dbo.Morador.pergunta,
-                                dbo.Morador.resposta,
-                                dbo.Residencia.numero,
-                                dbo.Residencia.andar
+                                dbo.Morador.resposta
                             from dbo.Morador
-                            INNER JOIN dbo.Residencia on Morador.residencia_id = Residencia.Id
                             order by nome";
                 var result = await conn.QueryAsync<Morador>(sql);
                 conn.Close();
