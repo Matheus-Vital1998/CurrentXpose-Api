@@ -21,9 +21,9 @@ namespace CurrentXposeAPI.Repository
                                 dbo.Sindico.login,
                                 dbo.Sindico.senha,
                                 dbo.Condominio.nome,
-                                nivel_relatorio
+                                dbo.Sindico.nivel_relatorio
                             from dbo.Sindico
-                            INNER JOIN dbo.Condominio on dbo.Sindico.condominio = dbo.Condominio.id
+                            INNER JOIN dbo.Condominio on dbo.Sindico.condominio_id = dbo.Condominio.id
                             order by nome";
 
                 var result = await conn.QueryAsync<Sindico>(sql);
