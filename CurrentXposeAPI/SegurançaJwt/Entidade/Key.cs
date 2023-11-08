@@ -2,6 +2,13 @@
 {
     public class Key
     {
-        public static string Secret = "123as4d56asd456dsdvadcwdgvwrgbvefwvcwwgedwfwgg";
+        private readonly IConfiguration _configuration;
+
+        public Key(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
+        public static string Secret = _configuration["AppSetting:SecretJwt"];
     }
 }
