@@ -11,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,8 +20,9 @@ builder.Services.AddDbContext<CurrentXposeAPIContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CurrentXpose"),
     builder => builder.MigrationsAssembly(typeof(CurrentXposeAPIContext).Assembly.FullName)));
 
+
 // Add Jwt
-var key = Encoding.ASCII.GetBytes("123as4d56asd456dsdvadcwdgvwrgbvefwvcwwgedwfwgg");
+var key = Encoding.ASCII.GetBytes(builder.Configuration["AppSettings:SecretJwt"]);
 
 builder.Services.AddAuthentication(x =>
 {
@@ -33,7 +35,7 @@ builder.Services.AddAuthentication(x =>
     x.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("123as4d56asd456dsdvadcwdgvwrgbvefwvcwwgedwfwgg")),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["AppSettings:SecretJwt"])),
         ValidateIssuer = false,
         ValidateAudience = false
     };
