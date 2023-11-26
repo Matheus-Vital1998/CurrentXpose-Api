@@ -19,9 +19,8 @@ namespace CurrentXposeAPI.Repository
                                 dbo.Predio.id,
                                 dbo.Predio.nome,
                                 dbo.Predio.total_de_andares,
-                                dbo.Condominio.nome
+                                dbo.Predio.condominio_id
                             from dbo.Predio
-                            INNER JOIN dbo.Condominio on dbo.Predio.condominio_id = dbo.Condominio.id
                             order by nome";
 
                 var result = await conn.QueryAsync<Predio>(sql);
