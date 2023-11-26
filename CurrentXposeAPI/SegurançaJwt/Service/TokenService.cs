@@ -1,4 +1,5 @@
 ﻿using CurrentXposeAPI.Entidades;
+using CurrentXposeAPI.Segurança.Entidade;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -9,13 +10,7 @@ namespace CurrentXposeAPI.Segurança.Service
 {
     public class TokenService
     {
-        private readonly IConfiguration _config;
-
-        public TokenService(IConfiguration config)
-        {
-            _config = config;
-        }
-        public string GenerateToken(Morador morador)
+        public object GenerateToken(Morador morador)
         {
             var tokenconfig = new SecurityTokenDescriptor
             {
@@ -25,7 +20,7 @@ namespace CurrentXposeAPI.Segurança.Service
                 }),
                 Expires = DateTime.UtcNow.AddHours(3),
                 SigningCredentials = new SigningCredentials(
-                new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_config["AppSettings:SecretJwt"])),
+                new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Key.Secret)),
                 SecurityAlgorithms.HmacSha256Signature)
             };
 
@@ -33,7 +28,10 @@ namespace CurrentXposeAPI.Segurança.Service
             var token = tokenHandler.CreateToken(tokenconfig);
             var tokenString = tokenHandler.WriteToken(token);
 
-            return tokenString.ToString();
+            return new
+            {
+                Token = tokenString
+            };
         }
     }
 }

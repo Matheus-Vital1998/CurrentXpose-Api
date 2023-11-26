@@ -15,5 +15,13 @@ namespace CurrentXposeAPI.Controllers
         {
             _leituraService = leituraService;
         }
+
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpGet("ObterDadosDeLeitura")]
+        public async Task<List<Leitura>> ObterDadosDeLeitura()
+        {
+            var leitura = await _leituraService.ObterDadosDeLeitura();
+            return leitura.ToList();
+        }
     }
 }
