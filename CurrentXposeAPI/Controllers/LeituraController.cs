@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CurrentXposeAPI.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class LeituraController : Controller
     {
         private readonly ILeituraService _leituraService;
