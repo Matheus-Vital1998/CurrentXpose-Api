@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CurrentXposeAPI.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class PredioController : Controller
     {
         private readonly IPredioService _predioService;
