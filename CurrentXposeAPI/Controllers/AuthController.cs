@@ -22,24 +22,48 @@ namespace CurrentXposeAPI.Controllers
             _sindicoService = sindicoService;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Auth(string username, string password)
+        [HttpPost("morador")] 
+        public async Task<IActionResult> AuthMorador(string username, string password)
         {
-            Morador morador = await _moradorService.Authenticate(username, password);
-            if (morador != null)
+            try
             {
-                var token = _tokenService.GenerateToken(morador);
-                return Ok(token);
-            }
+                Morador morador = await _moradorService.Authenticate(username, password);
 
-            Sindico sindico = await _sindicoService.Authenticate(username, password);
-            if (sindico != null)
+                if (morador != null)
+                {
+                    var token = _tokenService.GenerateToken(morador);
+                    return Ok(token);
+                }
+
+                return BadRequest("Morador não encontrado ou credenciais inválidas.");
+            }
+            catch (Exception ex)
             {
-                var token = _tokenService.GenerateToken(sindico);
-                return Ok(token);
+                Console.WriteLine(ex);
+                return BadRequest("Erro durante a autenticação do Morador.");
             }
+        }
 
-            return BadRequest();
+        [HttpPost("sindico")] 
+        public async Task<IActionResult> AuthSindico(string username, string password)
+        {
+            try
+            {
+                Sindico sindico = await _sindicoService.Authenticate(username, password);
+
+                if (sindico != null)
+                {
+                    var token = _tokenService.GenerateToken(sindico);
+                    return Ok(token);
+                }
+
+                return BadRequest("Sindico não encontrado ou credenciais inválidas.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex); 
+                return BadRequest("Erro durante a autenticação do Sindico.");
+            }
         }
     }
 }

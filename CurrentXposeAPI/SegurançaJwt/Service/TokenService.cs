@@ -10,9 +10,9 @@ namespace CurrentXposeAPI.Segurança.Service
     public class TokenService
     {
         private readonly IConfiguration _config;
-        public TokenService(IConfiguration config) 
+        public TokenService(IConfiguration config)
         {
-            _config = config;        
+            _config = config;
         }
         public object GenerateToken(Morador morador)
         {
@@ -20,7 +20,8 @@ namespace CurrentXposeAPI.Segurança.Service
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim("Id", morador.id.ToString()),
+            new Claim("Id", morador.id.ToString()),
+            new Claim("TipoUsuario", "Morador") 
                 }),
                 Expires = DateTime.UtcNow.AddHours(3),
                 SigningCredentials = new SigningCredentials(
@@ -34,7 +35,8 @@ namespace CurrentXposeAPI.Segurança.Service
 
             return new
             {
-                Token = tokenString
+                Token = tokenString,
+                TipoUsuario = "Morador"
             };
         }
 
@@ -45,11 +47,12 @@ namespace CurrentXposeAPI.Segurança.Service
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim("Id", sindico.id.ToString()),
+                    new Claim("TipoUsuario", "Sindico") // Adicione a reivindicação TipoUsuario aqui
                 }),
                 Expires = DateTime.UtcNow.AddHours(3),
                 SigningCredentials = new SigningCredentials(
-                new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_config["Api:ChaveSecret"])),
-                SecurityAlgorithms.HmacSha256Signature)
+                    new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_config["Api:ChaveSecret"])),
+                    SecurityAlgorithms.HmacSha256Signature)
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -58,7 +61,8 @@ namespace CurrentXposeAPI.Segurança.Service
 
             return new
             {
-                Token = tokenString
+                Token = tokenString,
+                TipoUsuario = "Sindico"
             };
         }
     }

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CurrentXposeAPI.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class SindicoController : Controller
     {
         private readonly ISindicoService _sindicoService;

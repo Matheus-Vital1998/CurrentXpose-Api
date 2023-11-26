@@ -19,7 +19,6 @@ namespace CurrentXposeAPI.Services
 
         public async Task<Sindico> Authenticate(string username, string password)
         {
-
             Sindico sindico = await _sindicoRepository.GetByLogin(username);
 
             if (sindico != null && sindico.senha == password)
