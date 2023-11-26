@@ -15,5 +15,17 @@ namespace CurrentXposeAPI.Services
         {
             return _moradorRepository.GetAll();
         }
+
+        public async Task<Morador> Authenticate(string username, string password)
+        {
+
+            Morador morador = await _moradorRepository.GetByLogin(username);
+
+            if (morador != null && morador.senha == password)
+            {
+                return morador;
+            }
+            return null;
+        }
     }
 }
