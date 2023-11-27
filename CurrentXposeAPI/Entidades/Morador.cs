@@ -15,7 +15,7 @@ namespace CurrentXposeAPI.Entidades
         public string nome { get; set; }
         public string  login { get; set; }
         public string senha { get; set; }
-        public Residencia residencia { get; set; }
+        public int residencia_id { get; set; }
 
         public Morador() { }
     }
